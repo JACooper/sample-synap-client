@@ -1,0 +1,1 @@
+Sample email client for Synap.
