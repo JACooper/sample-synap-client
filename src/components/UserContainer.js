@@ -1,5 +1,5 @@
 import React from 'react';
-import User from 'User.js';
+import User from './User.js';
 
 class UserContainer extends React.Component {
   constructor(props) {

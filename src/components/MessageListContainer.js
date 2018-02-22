@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import MessageList from 'MessageList.js';
+import MessageList from './MessageList.js';
 
 class MessageListContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.openMessage = this.openMessage.bind(this);
+    this.closeMessage = this.closeMessage.bind(this);
 
     this.state = {
       loading: true,
@@ -23,7 +26,15 @@ class MessageListContainer extends React.Component {
   }
 
   render() {
-    return <MessageList { ...this.state } />
+    return <MessageList { ...this.state } openMessage={this.openMessage} closeMessage={this.closeMessage} />
+  }
+
+  openMessage(id) {
+    this.setState({ detail: id });
+  }
+
+  closeMessage() {
+    this.setState({ detail: null });
   }
 }
 
