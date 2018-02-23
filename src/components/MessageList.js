@@ -10,10 +10,6 @@ class MessageList extends React.Component {
     this.detectScrollToBottom = this.detectScrollToBottom.bind(this);
   }
 
-  renderLoading() {
-    return <div>Loading. . .</div>;
-  }
-
   renderError() {
     return <div>Could not render content.</div>;
   }
@@ -31,10 +27,19 @@ class MessageList extends React.Component {
   }
 
   renderMessageList() {
+    const count = this.props.loading ? 'Loading. . .' : this.props.loaded;
     const messages = this.props.messages.map((message) => {
       return <Message key={message.id} message={message} openMessage={this.props.openMessage} />
     });
-    return <div className='message-list' ref={list => {this.list = list}}>{messages}</div>;
+
+    return (
+      <div className='message-list'>
+        <p>{count}</p>
+        <div className='messages' ref={list => { this.list = list }}>
+          {messages}
+        </div>
+      </div>
+    );
   }
 
   detectScrollToBottom(e) {
@@ -48,17 +53,15 @@ class MessageList extends React.Component {
   }
   
   componentDidMount() {
-    window.addEventListener('scroll', this.detectScrollToBottom, false);
+    this.list.addEventListener('scroll', this.detectScrollToBottom, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.detectScrollToBottom, false);
+    this.list.removeEventListener('scroll', this.detectScrollToBottom, false);
   }
 
   render() {
-    if (this.props.loading) {
-      return this.renderLoading();
-    } else if (this.props.detail !== undefined && this.props.detail !== null) {
+    if (this.props.detail !== undefined && this.props.detail !== null) {
       return this.renderDetail();
     } else if (this.props.messages) {
       return this.renderMessageList();
