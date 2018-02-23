@@ -34,14 +34,14 @@ class MessageList extends React.Component {
     const messages = this.props.messages.map((message) => {
       return <Message key={message.id} message={message} openMessage={this.props.openMessage} />
     });
-    return <div className='message-list'>{messages}</div>;
+    return <div className='message-list' ref={list => {this.list = list}}>{messages}</div>;
   }
 
   detectScrollToBottom(e) {
     // Only check if we're rendering the message list
-    if (this.props.detail === undefined || this.props.detail === null) {
+    if (this.list && (this.props.detail === undefined || this.props.detail === null)) {
       // If the user has scrolled to the bottom of the list
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      if (this.list.clientHeight + this.list.scrollTop >= this.list.scrollHeight) {
         this.props.loadMessages();
       }
     }

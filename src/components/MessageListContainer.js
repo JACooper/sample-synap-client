@@ -13,11 +13,12 @@ class MessageListContainer extends React.Component {
     this.state = {
       loading: true,
       loaded: 0,
+      messages: [],
     }
   }
 
   componentDidMount() {
-    if (this.state.messages === undefined) {
+    if (this.state.messages.length === 0) {
       this.loadMessages();
     }
   }
@@ -42,9 +43,13 @@ class MessageListContainer extends React.Component {
   loadMessages() {
     this.setState({ loading: true });
     axios
-      .get(`https://morning-falls-3769.herokuapp.com/api/messages?start=${this.state.loaded}&count=${this.state.loaded + 25}`)
+      .get(`https://morning-falls-3769.herokuapp.com/api/messages?start=${this.state.loaded}&count=25`)
       .then((response) => {
-        this.setState({ loading: false, loaded: this.state.loaded + 25, messages: response.data });
+        this.setState({
+          loading: false,
+          loaded: this.state.loaded + response.data.length,
+          messages: this.state.messages.concat(response.data)
+        });
       })
       .catch((error) => {
         this.setState({ loading: false, error });
