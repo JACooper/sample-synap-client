@@ -1,4 +1,5 @@
 import React from 'react';
+import './UserList.css';
 
 class UserList extends React.Component {
 
@@ -23,7 +24,7 @@ class UserList extends React.Component {
       // return user summary - avatar and name. Remember to key
     }) : <p>Select a message to view senders and recipients</p>;
 
-    return <div>{users}</div>
+    return <div className='user-list'>{users}</div>
   }
 
   render() {

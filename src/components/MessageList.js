@@ -27,14 +27,14 @@ class MessageList extends React.Component {
   }
 
   renderMessageList() {
-    const count = this.props.loading ? 'Loading. . .' : this.props.loaded;
+    const count = this.props.loading ? 'Loading. . .' : `${this.props.loaded} messages loaded`;
     const messages = this.props.messages.map((message) => {
       return <Message key={message.id} message={message} openMessage={this.props.openMessage} />
     });
 
     return (
       <div className='message-list'>
-        <p>{count}</p>
+        <p className='inbox-status'>{count}</p>
         <div className='messages' ref={list => { this.list = list }}>
           {messages}
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Message.css';
 
 class Message extends React.Component {
 
@@ -10,8 +11,8 @@ class Message extends React.Component {
     const msg = this.props.message;
     return (
       <div className='message-summary' onClick={() => {this.props.openMessage(msg.id)}}>
-        <p>from: {msg.from}</p>
-        <p>subject: {msg.subject}</p>
+        <p className='message-subject'>subject: {msg.subject}</p>
+        <p className='message-sender'>from: {msg.from}</p>
       </div>
     );
   }

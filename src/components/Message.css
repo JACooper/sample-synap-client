@@ -1,0 +1,19 @@
+.message-summary {
+  border-bottom: 1px solid gray;
+  padding: 10px;
+}
+
+.message-summary:hover {
+  background-color: #EEEEEE;
+  cursor: pointer;
+}
+
+.message-subject {
+  font-weight: 600;
+  font-size: 17px;
+  margin: 0 0 8px 0;
+}
+
+.message-sender {
+  margin: 0;
+}

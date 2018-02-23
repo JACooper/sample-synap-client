@@ -1,0 +1,9 @@
+.user-list {
+  width: 40%;
+  height: 100vh;
+  background-color: lightgray;
+}
+
+.user-list p {
+  margin-left: 10px;
+}
