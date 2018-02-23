@@ -9,9 +9,9 @@ class UserListContainer extends React.Component {
       summary: true,
     }
   }
-
+  // on update, request user information
   render() {
-    return <UserList { ...this.state } />
+    return <UserList { ...this.state } users={this.props.users} />
   }
 }
 

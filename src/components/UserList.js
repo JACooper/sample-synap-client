@@ -20,8 +20,8 @@ class UserList extends React.Component {
   }
 
   renderUserList() {
-    const users = this.props.users ? this.props.users.map((user) => {
-      // return user summary - avatar and name. Remember to key
+    const users = this.props.users.length > 0 ? this.props.users.map((user) => {
+      return <p>{user}</p>
     }) : <p>Select a message to view senders and recipients</p>;
 
     return <div className='user-list'>{users}</div>
