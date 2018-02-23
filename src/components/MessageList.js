@@ -52,6 +52,23 @@ class MessageList extends React.Component {
     }
   }
   
+  componentWillReceiveProps(nextProps) {
+    // Before entering detail view, save scroll position to use later
+    if ((this.props.detail === undefined || this.props.detail === null)
+      && nextProps.detail !== undefined && nextProps.detail !== null) {
+        this.setState({ scroll: this.list.scrollTop });
+      }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // If we were in detail view and are now in list, re-attach scroll listener
+    // The listener is automatically removed when the ref unmounts, since it only exists in renderMessageList()
+    if (prevProps.detail !== undefined && prevProps.detail !== null && this.props.detail === null) {
+      this.list.addEventListener('scroll', this.detectScrollToBottom, false);
+      this.list.scrollTop = this.state.scroll;
+    }
+  }
+
   componentDidMount() {
     this.list.addEventListener('scroll', this.detectScrollToBottom, false);
   }
