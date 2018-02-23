@@ -35,8 +35,7 @@ class MessageListContainer extends React.Component {
   openMessage(id) {
     this.setState({ detail: id });
     const msg = this.state.messages.find((msg) => { return msg.id === id });
-    const users = [msg.from, msg.to];
-    users.concat(msg.cc);
+    const users = [msg.from, msg.to].concat(msg.cc);
     this.props.getUsers(users);
   }
 
