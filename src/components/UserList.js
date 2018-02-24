@@ -1,4 +1,5 @@
 import React from 'react';
+import User from './User.js';
 import './UserList.css';
 
 class UserList extends React.Component {
@@ -20,9 +21,10 @@ class UserList extends React.Component {
   }
 
   renderUserList() {
+    let userKey = 0;
     const users = this.props.users.length > 0 ? this.props.users.map((user) => {
-      return <p>{user}</p>
-    }) : <p>Select a message to view senders and recipients</p>;
+      return <User key={userKey++} user={user} />
+    }) : <p className='empty-list-message'>Select a message to view senders and recipients</p>;
 
     return <div className='user-list'>{users}</div>
   }

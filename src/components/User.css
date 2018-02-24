@@ -1,0 +1,28 @@
+.summary {
+  display: flex;
+  height: 80px;
+  background-color: #EEEEEE;
+  margin: 5px 5px 0 5px;
+  padding: 10px 0;
+}
+
+.summary:hover {
+  background-color: #FEFEFE;
+  cursor: pointer;
+}
+
+.summary-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #79B6F2;
+  border: 1px solid gray;
+  border-radius: 50px;
+  margin-left: 20px;
+}
+
+.summary-name {
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 50px;
+}
