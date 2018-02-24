@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import MessageListContainer from './components/MessageListContainer.js';
 import UserListContainer from './components/UserListContainer.js';
 import './App.css';
