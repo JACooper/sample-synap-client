@@ -1,5 +1,5 @@
 import React from 'react';
-// import './UserDetail.css';
+import './UserDetail.css';
 
 class UserDetail extends React.Component {
   renderError() {
@@ -10,7 +10,7 @@ class UserDetail extends React.Component {
     const company = this.props.user.company ? <p>Works at {this.props.user.company.name}</p> : null;
     return (
       <div className='user-detail'>
-        <img className='detail-avatar' src={this.props.user.avatar} alt='' />
+        <img className='user-detail-avatar' src={this.props.user.avatar} alt='' />
         <p>{this.props.user.name}</p>
         <p>{this.props.user.email}</p>
         {company}

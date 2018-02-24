@@ -1,4 +1,5 @@
 import React from 'react';
+import './MessageDetail.css';
 
 class MessageDetail extends React.Component {
 
@@ -8,13 +9,23 @@ class MessageDetail extends React.Component {
 
   renderMessageDetail() {
     const msg = this.props.message;
+    const copied = msg.cc.reduce((list, user, index) => {
+      if (index === 0) {
+        return list = user;
+      } else {
+        return list += `, ${user}`;
+      }
+    });
+
     return (
       <div className='message-detail'>
-        <p>from: {msg.from}</p>
-        <p>to: {msg.to}</p>
-        <p>cc: {msg.cc}</p>
-        <p>subject: {msg.subject}</p>
-        <p>{msg.body}</p>
+        <p className='message-detail-subject'>{msg.subject}</p>
+        <div className='message-detail-header'>
+          <p>from: {msg.from}</p>
+          <p>to: {msg.to}</p>
+          <p>cc: {copied}</p>
+        </div>
+        <p className='message-detail-body'>{msg.body}</p>
       </div>
     );
   }

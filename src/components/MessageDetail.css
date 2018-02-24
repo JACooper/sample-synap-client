@@ -1,0 +1,24 @@
+.message-detail {
+  padding: 0;
+  margin: 16px 0 0 0;
+}
+
+.message-detail-subject {
+  /* color: darkslategray; */
+  padding-top: 5px;
+  padding-left: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.message-detail-header {
+  border-top: 1px solid lightgray;
+  padding-left: 5px;
+  color: slategray;
+}
+
+.message-detail-body {
+  border-top: 1px solid lightgray;
+  padding: 10px 5px 0 5px;
+  color: black;
+}
