@@ -17,9 +17,9 @@ class User extends React.Component {
 
   renderUser() {
     return (
-      <div className='summary'>
-        <img className='summary-avatar' src={this.state.avatar} alt='' />
-        <p className='summary-name'>{this.props.user.name}</p>
+      <div className='user-summary' onClick={this.props.openDetail}>
+        <img className='user-summary-avatar' src={this.state.avatar} alt='' />
+        <p className='user-summary-name'>{this.props.user.name}</p>
       </div>
     );
   }

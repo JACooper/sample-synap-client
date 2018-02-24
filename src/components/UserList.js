@@ -1,5 +1,6 @@
 import React from 'react';
 import User from './User.js';
+import UserDetail from './UserDetail.js';
 import './UserList.css';
 
 class UserList extends React.Component {
@@ -8,29 +9,35 @@ class UserList extends React.Component {
     return <div>Could not render content.</div>;
   }
 
-  // Problem: Only want to request users once, then display summaries.
-  // That means: get users here. Make user summaries have loading state.
-  // When a user is clicked on, display that detail instead of a summary (without other requests).
-  // When they go back, display summary without reloading.
-
-  // So. On message select, start user load. Display loading summaries. As user requests resolve, pass in data.
-
-  // Renders avatar, name, description, email address
   renderUserDetail() {
-    return <div>User detail</div>
+    const user = this.props.users[this.props.detail];
+    return (
+      <div className='user-list'>
+        <button className='button' onClick={this.props.closeDetail}>Back</button>
+        <UserDetail 
+          user={user}
+          clearDetail={this.props.clearDetail}
+        />
+      </div>
+    );
   }
 
   renderUserList() {
-    let userKey = 0;
-    const users = this.props.users.length > 0 ? this.props.users.map((user) => {
-      return <User key={userKey++} user={user} />
+    const users = this.props.users.length > 0 ? this.props.users.map((user, index) => {
+      return (
+        <User
+          key={index}
+          user={user}
+          openDetail={() => { this.props.openDetail(index) }}
+        />
+      );
     }) : <p className='empty-list-message'>Select a message to view senders and recipients</p>;
 
     return <div className='user-list'>{users}</div>
   }
 
   render() {
-    if (this.props.detail) {
+    if (this.props.detail !== undefined && this.props.detail >= 0) {
       return this.renderUserDetail();
     } else if (this.props.summary) {
       return this.renderUserList();

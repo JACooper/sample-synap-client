@@ -11,8 +11,8 @@ class Message extends React.Component {
     const msg = this.props.message;
     return (
       <div className='message-summary' onClick={() => {this.props.openMessage(msg.id)}}>
-        <p className='message-subject'>subject: {msg.subject}</p>
-        <p className='message-sender'>from: {msg.from}</p>
+        <p className='message-subject'>{msg.subject}</p>
+        <p className='message-sender'>{msg.from}</p>
       </div>
     );
   }
