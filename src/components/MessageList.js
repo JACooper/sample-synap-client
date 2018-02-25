@@ -20,7 +20,10 @@ class MessageList extends React.Component {
     });
     return (
       <div className='message-list'>
-        <button className='button' onClick={this.props.closeMessage}>Back</button>
+        <div className='back-bar'>
+          <button id='message-detail-back' className='back-button' onClick={this.props.closeMessage}/>
+          <label htmlFor='message-detail-back'>Return to messages</label>
+        </div>
         <MessageDetail message={message}/>
       </div>
     );

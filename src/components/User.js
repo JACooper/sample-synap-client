@@ -26,15 +26,22 @@ class User extends React.Component {
 
   componentWillMount() {
     const urlSrc = this.props.user.avatar;
-    const avi = new Image();
+    this.avi = new Image();
 
-    avi.onload = () => {
-      // Update state so image component will use new src
-      this.setState({ avatar: this.props.user.avatar });
+    this.avi.onload = () => {
+      if (this.state !== undefined) {
+        // Update state so image component will use new src
+        this.setState({ avatar: this.props.user.avatar });
+      }
     }
 
     // Make request for resource
-    avi.src = urlSrc;
+    this.avi.src = urlSrc;
+  }
+
+  componentWillUnmount() {
+    // Prevent calling setState on unmounted component (i.e. if userlist is closed before images load)
+    this.avi.onload = () => {};
   }
 
   render() {

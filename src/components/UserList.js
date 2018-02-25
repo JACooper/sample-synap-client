@@ -13,7 +13,10 @@ class UserList extends React.Component {
     const user = this.props.users[this.props.detail];
     return (
       <div className='user-list'>
-        <button className='button' onClick={this.props.closeDetail}>Back</button>
+        <div className='back-bar'>
+          <button id='user-detail-back' className='back-button' onClick={this.props.closeDetail}/>
+          <label htmlFor='user-detail-back'>Return to users</label>
+        </div>
         <UserDetail 
           user={user}
           clearDetail={this.props.clearDetail}

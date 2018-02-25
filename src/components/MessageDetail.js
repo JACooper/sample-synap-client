@@ -9,13 +9,13 @@ class MessageDetail extends React.Component {
 
   renderMessageDetail() {
     const msg = this.props.message;
-    const copied = msg.cc.reduce((list, user, index) => {
+    const copied = msg.cc.length > 0 ? msg.cc.reduce((list, user, index) => {
       if (index === 0) {
         return list = user;
       } else {
         return list += `, ${user}`;
       }
-    });
+    }) : null;
 
     return (
       <div className='message-detail'>

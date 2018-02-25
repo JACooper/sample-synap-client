@@ -1,7 +1,8 @@
 .user-list {
-  width: 35%;
+  width: calc(35% - 1px);
   height: 100vh;
   background-color: #DDD;
+  margin-right: 1px;
 }
 
 .empty-list-message {
