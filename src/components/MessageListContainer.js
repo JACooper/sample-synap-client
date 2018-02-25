@@ -37,7 +37,8 @@ class MessageListContainer extends React.Component {
       this.setState({
         loading: false,
         loaded: this.state.loaded + response.data.length,
-        messages: this.state.messages.concat(response.data)
+        messages: this.state.messages.concat(response.data),
+        error: null,
       });
     })
     .catch((error) => {
