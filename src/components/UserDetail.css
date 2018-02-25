@@ -1,4 +1,5 @@
 .user-detail {
+  grid-area: users;
   width: 100%;
   display: flex;
   flex-direction: column;

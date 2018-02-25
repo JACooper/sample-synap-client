@@ -1,6 +1,8 @@
 .message-list {
-  height: calc(100vh - 30px);
-  width: 65%;
+  /* 30px for status bar + 50px for search bar = 80px */
+  height: calc(100vh - 80px);
+  /* width: 60%; */
+  grid-area: messages;
 }
 
 .messages {

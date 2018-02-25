@@ -1,6 +1,14 @@
 .App {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+}
+
+.content-container {
+  width: 95%;
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-columns: 30% 70%;
+  grid-template-areas: 'users search' ' users messages';
 }
 
 .back-button {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MessageListContainer from './components/MessageListContainer.js';
 import UserListContainer from './components/UserListContainer.js';
+import SearchBar from './components/SearchBar.js';
 import './App.css';
 
 class App extends Component {
@@ -18,8 +19,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <UserListContainer users={this.state.users} />
-        <MessageListContainer getUsers={this.getUsers} clearUsers={this.clearUsers} />
+        <div className='content-container'>
+          <SearchBar />
+          <UserListContainer users={this.state.users} />
+          <MessageListContainer getUsers={this.getUsers} clearUsers={this.clearUsers} />
+        </div>
       </div>
     );
   }

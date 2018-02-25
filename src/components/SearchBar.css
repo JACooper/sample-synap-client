@@ -1,0 +1,17 @@
+.search-bar-container {
+  height: 50px;
+  grid-area: search;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #DDDDDD;
+}
+
+.search-bar {
+  width: 95%;
+  font-size: 18px;
+  border-radius: 7px;
+  border-style: solid;
+  border: 1px solid gray;
+  padding-left: 5px;
+}
