@@ -15,3 +15,8 @@
   border: 1px solid gray;
   padding-left: 5px;
 }
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0px 0px 2px 1px skyblue; 
+}

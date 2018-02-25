@@ -1,8 +1,21 @@
 .message-list {
   /* 30px for status bar + 50px for search bar = 80px */
   height: calc(100vh - 80px);
-  /* width: 60%; */
+  border-right: 1px solid lightgray;
   grid-area: messages;
+}
+
+@media screen and (max-width: 1024px) {
+  .message-list {
+    height: calc(100vh - 30px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .message-list {
+    /* searchbar + collapsed user list + status */
+    height: calc(100vh - 140px);
+  }
 }
 
 .messages {
