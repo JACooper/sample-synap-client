@@ -71,31 +71,36 @@ class MessageList extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     // If we were in detail view and are now in list, re-attach scroll listener
     // The listener is automatically removed when the ref unmounts, since it only exists in renderMessageList()
+    // Make sure to not try to restore scroll if coming from error state, as this.state will be undefined
     if (prevProps.detail !== undefined && prevProps.detail !== null && this.props.detail === null) {
       this.list.addEventListener('scroll', this.detectScrollToBottom, false);
       this.list.scrollTop = this.state.scroll;
+    } else if (prevProps.error !== undefined && prevProps.error !== null && this.props.error === null) {
+      this.list.addEventListener('scroll', this.detectScrollToBottom, false);
     }
   }
 
   componentDidMount() {
-    if (this.props.detail === undefined || this.props.detail === null) {
+    if ((this.props.error === undefined || this.props.error === null)
+      && (this.props.detail === undefined || this.props.detail === null)) {
       this.list.addEventListener('scroll', this.detectScrollToBottom, false);
     }
   }
 
   componentWillUnmount() {
-    if (this.props.detail === undefined || this.props.detail === null) {
+    if ((this.props.error === undefined || this.props.error === null)
+      && (this.props.detail === undefined || this.props.detail === null)) {
       this.list.removeEventListener('scroll', this.detectScrollToBottom, false);
     }
   }
 
   render() {
-    if (this.props.detail !== undefined && this.props.detail !== null) {
-      return this.renderDetail();
-    } else if (!this.props.error) {
-      return this.renderMessageList();
-    } else {
+    if (this.props.error) {
       return this.renderError();
+    } else if (this.props.detail !== undefined && this.props.detail !== null) {
+      return this.renderDetail();
+    } else {
+      return this.renderMessageList();
     }
   }
 }
