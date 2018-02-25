@@ -11,7 +11,12 @@ class MessageList extends React.Component {
   }
 
   renderError() {
-    return <div>Could not render content.</div>;
+    return (
+      <div className='message-list'>
+        <p className='error-text'>Could not load messages.</p>
+        <button onClick={this.props.loadMessages}>Retry</button>
+      </div>
+    );
   }
 
   renderDetail() {
@@ -58,7 +63,7 @@ class MessageList extends React.Component {
   componentWillReceiveProps(nextProps) {
     // Before entering detail view, save scroll position to use later
     if ((this.props.detail === undefined || this.props.detail === null)
-      && nextProps.detail !== undefined && nextProps.detail !== null) {
+      && (nextProps.detail !== undefined && nextProps.detail !== null)) {
         this.setState({ scroll: this.list.scrollTop });
       }
   }
@@ -73,20 +78,26 @@ class MessageList extends React.Component {
   }
 
   componentDidMount() {
-    this.list.addEventListener('scroll', this.detectScrollToBottom, false);
+    if (this.props.error) {
+      this.list.addEventListener('scroll', this.detectScrollToBottom, false);
+    }
   }
 
   componentWillUnmount() {
-    this.list.removeEventListener('scroll', this.detectScrollToBottom, false);
+    if (this.props.error) {
+      this.list.removeEventListener('scroll', this.detectScrollToBottom, false);
+    }
   }
 
   render() {
     if (this.props.detail !== undefined && this.props.detail !== null) {
       return this.renderDetail();
-    } else if (this.props.messages) {
+    } else if (this.props.messages !== undefined && this.props.messages.length > 0) {
       return this.renderMessageList();
-    } else {
+    } else if (this.props.error) {
       return this.renderError();
+    } else {
+      return <div className='message-list'>Loading. . .</div>;
     }
   }
 }

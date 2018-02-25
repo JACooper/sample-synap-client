@@ -41,7 +41,7 @@ class MessageListContainer extends React.Component {
       });
     })
     .catch((error) => {
-      this.setState({ loading: false, error });
+      this.setState({ loading: false, error: error });
     });
   }
 

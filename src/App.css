@@ -58,3 +58,7 @@
   cursor: pointer;
   background-position-y: 30px;
 }
+
+.error-text {
+  color: red;
+}
