@@ -78,13 +78,13 @@ class MessageList extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.error) {
+    if (this.props.detail === undefined || this.props.detail === null) {
       this.list.addEventListener('scroll', this.detectScrollToBottom, false);
     }
   }
 
   componentWillUnmount() {
-    if (this.props.error) {
+    if (this.props.detail === undefined || this.props.detail === null) {
       this.list.removeEventListener('scroll', this.detectScrollToBottom, false);
     }
   }
@@ -92,12 +92,10 @@ class MessageList extends React.Component {
   render() {
     if (this.props.detail !== undefined && this.props.detail !== null) {
       return this.renderDetail();
-    } else if (this.props.messages !== undefined && this.props.messages.length > 0) {
+    } else if (!this.props.error) {
       return this.renderMessageList();
-    } else if (this.props.error) {
-      return this.renderError();
     } else {
-      return <div className='message-list'>Loading. . .</div>;
+      return this.renderError();
     }
   }
 }
