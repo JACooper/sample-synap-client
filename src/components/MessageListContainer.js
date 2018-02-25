@@ -30,7 +30,7 @@ class MessageListContainer extends React.Component {
   }
   
   loadMessages() {
-    this.setState({ loading: true });
+    this.setState({ loading: true, error: null });
     axios
     .get(`https://morning-falls-3769.herokuapp.com/api/messages?start=${this.state.loaded}&count=25`)
     .then((response) => {
